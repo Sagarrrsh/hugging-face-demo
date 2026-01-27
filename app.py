@@ -2,12 +2,12 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import pipeline
 
-app = FastAPI()
+app = FastAPI(title="Text Generator API")
 
-# Load model once at startup
+# Load model ONCE at startup (important)
 generator = pipeline(
     "text-generation",
-    model="distilgpt2"
+    model="sshleifer/tiny-gpt2"
 )
 
 class GenerateRequest(BaseModel):
